@@ -33,9 +33,13 @@ public class FamiliasRest {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Familia getFamiliaById(@PathParam("id") Long id) {
-		//TODO
-		return null;
+	public Response getFamiliaById(@PathParam("id") Long id) {
+		try {
+			familiaBean.obtenerPorId(id);
+		} catch (Exception e) {
+			return Response.status(Response.Status.NOT_FOUND).entity("No existe una familia con el id: " + id).build();
+		}
+		return Response.ok(familiaBean.obtenerPorId(id)).build();
 	}
 	
 	@GET
