@@ -24,7 +24,7 @@ public class FamiliasRest {
     @EJB
     private UsuarioBeanRemote usuarioBean;
 
-    @POST
+    @GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response autenticar(String nombreAcceso, String contrasena){
 		try {
